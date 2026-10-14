@@ -61,7 +61,7 @@ def api_health():
         "documentation": "/docs"
     }
 
-@app.get("/{full_path:path}")
+@app.api_route("/{full_path:path}", methods=["GET", "HEAD"])
 async def serve_spa(full_path: str):
     # Don't intercept API routes (if any didn't match, return 404)
     if full_path.startswith("api/") or full_path == "api":
